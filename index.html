@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css" />
+  <title>Home Page</title>
+</head>
+<body onload="getQuotes()">
+  <nav class="navbar position-absolute container-fluid navbar-light bg-light px-5">
+    <a class="navbar-brand" href="#">
+      <!-- <img src="cs50_logo.jpg" alt="cs50 logo" /> -->
+      <strong class="h5">CS50</strong>
+      this was.
+      <img class="rounded-circle ml-3" src="yoda.png" alt="yoda master" />
+    </a>
+  </nav>
+  <main class="container-fluid d-flex justify-content-center align-items-center" >
+    <div class="card text-center">
+      <div class="card-body">
+        <h4 class="card-title">Have you paid attention to the classes?</h5>
+        <p class="card-text">Take this 4 step test and check if you remmember each part of the course!</p>
+        <a href="#" class="btn btn-outline-dark mt-3">Show me the odds!</a>
+        <a href="https://www.youtube.com/watch?v=rCXWdM6P5II" target="_blank" class="btn btn-light mt-3" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<small>Give me something cool!</small>">
+          Nah, too boring...</a>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-dark text-light position-absolute fixed-bottom d-flex justify-content-center px-3 py-2">
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    function getQuotes() {
+      fetch("https://type.fit/api/quotes/")
+      .then(function(response) {
+        return response.json()
+      })
+      .then(function(apiData) {
+        const authors = ["Abraham Lincoln", "Thomas Edison", "Aristotle",
+          "William Shakespeare", "Benjamin Spock", "Benjamin Franklin", 
+          "Chinese proverb", "Socrates", "Ralph Emerson", "Napoleon Bonaparte"]
+        const data = apiData.filter(q => authors.find(a => a === q.author))
+        const quoteIndex = Math.floor(Math.random() * data.length)
+        const author = document.createTextNode(data[quoteIndex].author)
+        const quote = document.createTextNode('"' + data[quoteIndex].text + '"')
+        const quoteEl = document.createElement("p")
+          quoteEl.appendChild(quote)
+          quoteEl.setAttribute("class", "text-light lead mb-0 ")
+          quoteEl.appendChild(document.createTextNode("  —  "))
+          quoteEl.appendChild(author)
+        const footer = document.querySelector("footer")
+          footer.appendChild(quoteEl)
+      });
+    }
+  </script>
+</body>
+</html>
