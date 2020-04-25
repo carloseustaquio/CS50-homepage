@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./styles/styles.css" />
   <title>Home Page</title>
 </head>
 <body onload="loadFooter(); loadNavbar()">
   
   <!-- navbar being loaded from script -->
   
-  <main class="container-fluid d-flex justify-content-center align-items-center">
-    <div class="card text-center w-50">
+  <main class="home container-fluid d-flex justify-content-center align-items-center">
+    <img class="position-absolute stress-ball" src="./assets/stress_ball.png" alt="stress_ball">
+    <div class="card text-center">
       <div class="card-body neo-shadow px-4 py-4 br-8">
         <h4 class="card-title">Have you paid attention to the classes?</h5>
         <p class="card-text">Take this 6 step test and check if you remmember each part of the course!</p>
-        <a href="/test.html" class="btn btn-outline-dark mt-3">Tell me the odds!</a>
-        <a id="nah" href="https://www.youtube.com/watch?v=rCXWdM6P5II" target="_blank" class="btn btn-light mt-3"></a>
+        <a class="card-btn btn btn-outline-dark mt-3" href="/test.html">Tell me the odds!</a>
+        <a class="card-btn btn btn-light mt-3" id="nah" href="https://www.youtube.com/watch?v=rCXWdM6P5II" target="_blank"></a>
       </div>
     </div>
   </main>
@@ -28,10 +29,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   
   <!-- script to load navbar -->
-  <script src="navbar.js"></script>
+  <script src="./functions/navbar.js"></script>
 
   <!-- script to load footer -->
-  <script type="module" src="footer.js"></script>
+  <script type="module" src="./functions/footer.js"></script>
 
 </body>
 </html>
