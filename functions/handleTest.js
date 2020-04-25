@@ -131,7 +131,7 @@ function finishTest() {
 
     cardBody.appendChild(p)
     progressBar.classList.add("bg-green")
-    actButton.setAttribute("href", "index.html")
+    actButton.setAttribute("href", "about.html")
     actButton.appendChild(document.createTextNode("Continue"))
   }
   if (result === "improve") {
@@ -145,7 +145,7 @@ function finishTest() {
     cardBody.appendChild(p)
     progressBar.classList.add("bg-yellow")
     actButton.setAttribute("href", "index.html")
-    actButton.appendChild(document.createTextNode("Continue"))
+    actButton.appendChild(document.createTextNode("Try again!"))
   }
   if (result === "bad") {
     const iconText = document.createTextNode("highlight_off")
