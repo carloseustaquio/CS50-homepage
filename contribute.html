@@ -4,27 +4,94 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./styles/styles.css" />
   <title>Home Page</title>
 </head>
 <body onload="loadFooter(); loadNavbar()">
   
   <!-- navbar being loaded from script -->
-  
-  <main class="container-fluid d-flex justify-content-center align-items-center">
-    CONTRIBUTION PAGE
-  </main>
+  <div class="nav-space"></div>
+  <main class="container-fluid d-flex h-100 pt-4 overflow-auto">
+    <div class="row">
+      <div class="col-md d-flex flex-column justify-content-center px-5 pr-md-3">
+        <h1 class="text-center">Hi CS50 student! You can contribute to this project!</h1>
+        <h4 class="text-center mt-4">
+          Send us an email with your (creative) question
+          to test out others if they really payed attention
+          to the classes!
+        </h4>
+      </div>
+      <form onsubmit="submitForm(event)" class="col-md mt-3 px-5 pl-md-4 d-flex flex-column justify-content-center">
+        <div class="form-group">
+          <label for="question">Question</label>
+          <input type="text" class="form-control" 
+          id="question" name="question"
+          placeholder="Your creative question here">
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label for="answer1">Answer nº 1</label>
+            <input type="text" class="form-control" 
+            id="answer1" name="answer1"
+            placeholder="First answer">
+          </div>
+          <div class="form-group col">
+            <label for="answer2">Answer nº 2</label>
+            <input type="text" class="form-control" 
+            id="answer2" name="answer2"
+            placeholder="Second answer">
+          </div>
+        </div>
+        <div>
+          <p class="d-inline-flex mr-2 mb-1">Which question is the correct?</p>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline1" value="opt1"
+            name="correctAnswer" class="custom-control-input">
+            <label class="custom-control-label" for="customRadioInline1">First</label>
+          </div>
 
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline2" value="opt2"
+            name="correctAnswer" class="custom-control-input">
+            <label class="custom-control-label" for="customRadioInline2">Second</label>
+          </div>
+
+        </div>
+        <label for="selectYear" class="d-inline-flex mr-3 mt-3 mt-md-1">Which CS50 year this question refers to?</label>
+        <select id="selectYear" class="custom-select">
+          <option selected>Does't matter, everyone will understand</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+        </select>
+        <button type="submit" class="btn btn-dark mt-4">Take this one!</button>
+      </form>
+      <div class="footer-space"></div>
+    </div>
+  </main>
   <!-- footer being loaded from script -->
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   
   <!-- script to load navbar -->
-  <script src="navbar.js"></script>
+  <script src="./functions/navbar.js"></script>
 
   <!-- script to load footer -->
-  <script type="module" src="footer.js"></script>
+  <script type="module" src="./functions/footer.js"></script>
+
+  <script>
+    function submitForm(e) {
+      e.preventDefault()
+      let answers = {}
+      for (el of e.target) {
+        answers[el.name] = el.value
+      }
+      alert(JSON.stringify(answers))
+      console.log(answers)
+    }
+  </script>
 
 </body>
 </html>

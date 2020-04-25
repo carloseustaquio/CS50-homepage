@@ -4,15 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./styles/styles.css" />
   <title>Home Page</title>
 </head>
 <body onload="loadFooter(); loadNavbar()">
   
   <!-- navbar being loaded from script -->
   
-  <main class="container-fluid d-flex justify-content-center align-items-center">
-    ABOUT PAGE
+  <div class="nav-space"></div>
+  <main class="container-fluid d-flex h-100 overflow-auto p-3 p-sm-5">
+    <div class="row">
+      <div class="d-flex flex-column align-items-center col-sm-4">
+        <img class="mx-auto w-50 h-auto rounded-circle" src="./assets/profile_photo.png" alt="profile_photo">
+        <div class="d-flex flex-column my-4">
+          <a class="my-1 text-dark" href="https://linkedin.com/in/carloseustaquio" target="_blank">
+            <img class="mr-2 icon" src="./assets/github.svg" alt="">
+            linkedin.com/carloseustaquio
+          </a>  
+          <a class="my-1 text-dark" href="https://github.com/carloseustaquio" target="_blank">
+            <img class="mr-2 icon" src="./assets/linkedin.svg" alt="">
+            github.com/carloseustaquio
+          </a>
+          <a class="my-1 text-dark" href="mailto:caeudev@gmail.com" target="_blank">
+            <img class="mr-2 icon" src="./assets/email.svg" alt="">
+            caeudev@gmail.com
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-8 d-flex flex-column">
+        
+        <h1>About</h1>
+        <p>
+          Hi! I'm Carlos, web dev and now almost a CS50x
+          graduate! I had great moments along this course,
+          where, beyond learning A LOT of new things, I could have
+          so much fun with this awesome folks.
+          So, in the "Home Page" challenge (web track) I decided to
+          collect some of the funny moments of this adventure! Wasn't 
+          it fun?
+        </p>
+        <p>
+          Would you like to contribute to this project? Ok, you can 
+          click right <a href="contribute.html">here</a>. <br> If you
+          find any errors or bugs in the page, or just want to say
+          hi, send me an email directly!
+        </p>
+      </div>
+      <div class="footer-space"></div>
+    </div>
   </main>
 
   <!-- footer being loaded from script -->
@@ -21,10 +60,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   
   <!-- script to load navbar -->
-  <script src="navbar.js"></script>
+  <script src="./functions/navbar.js"></script>
 
   <!-- script to load footer -->
-  <script type="module" src="footer.js"></script>
+  <script type="module" src="./functions/footer.js"></script>
 
 </body>
 </html>
