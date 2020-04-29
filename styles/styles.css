@@ -136,3 +136,22 @@ main {
 .icon {
   width: 20px;
 }
+
+.opacity-0 {
+  opacity: 0
+}
+
+.center-absolute {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.font-size-2 {
+  font-size: 2rem;
+}
+
+.scale-2 {
+  transform: scale(1.5)
+}
