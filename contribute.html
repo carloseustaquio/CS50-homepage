@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <meta name="theme-color" content="#333" />
+  <meta name="description" content="Harvard CS50 Home Page Challenge (Web Track)" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="./styles/styles.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>Home Page</title>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
   <script type="text/javascript">
@@ -85,7 +90,9 @@
           <option value="2020">2020</option>
           <option value="2021">2021</option>
         </select>
-        <input type="submit" value="Take this one!" class="btn btn-dark mt-4">
+        <button type="submit" class="btn btn-dark mt-4">
+          Take this one!
+        </button>
       </form>
       <div class="footer-space"></div>
     </div>
@@ -101,13 +108,26 @@
   <!-- script to load footer -->
   <script type="module" src="./functions/footer.js"></script>
   
-  <script type="text/javascript">
-    // window.onload = function() {
-      document.querySelector('#contribute-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        emailjs.sendForm('default_service', 'contribute_template', this);
-      });
-    // }
+  <!-- handles submit form -->
+  <script type="module">
+    import { sendMessage, sendAnimation, thankAnimation } from "./functions/handleContribute.js"
+    import { setBtnLoading, setBtnError } from './functions/setBtnLoading.js'
+    
+    const form = document.querySelector('#contribute-form')
+    
+    form.addEventListener('submit', async function(event) {
+      event.preventDefault();
+      setBtnLoading(document.querySelector("button[type=submit]"))
+      try {
+        await sendMessage(this)
+        sendAnimation()
+        thankAnimation()
+      }
+      catch (err) {
+        setBtnError(document.querySelector("button[type=submit]"))
+      }
+    });
+
   </script>
 </body>
 </html>
