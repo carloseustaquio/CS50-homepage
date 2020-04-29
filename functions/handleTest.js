@@ -1,4 +1,5 @@
 import questionsJSON from './questions.js'
+import removeChilds from './removeChilds.js'
 
 let questions = questionsJSON
 let numQuestions = questions.length
@@ -46,15 +47,6 @@ function loadQuestion() {
 
   counter++
   questions = questions.filter(q => q.id !== selQuestion.id)
-}
-
-// remove all child elements
-function removeChilds(e) {
-    let child = e.lastElementChild
-    while (child) { 
-      e.removeChild(child) 
-      child = e.lastElementChild
-    } 
 }
 
 // check number of hits (correct answers)
