@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="./styles/styles.css" />
   <title>Home Page</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+        emailjs.init("user_EdlAkWFsTNdzeYJM7dHme");
+    })();
+  </script>
 </head>
 <body onload="loadFooter(); loadNavbar()">
   
@@ -21,51 +27,65 @@
           to the classes!
         </h4>
       </div>
-      <form onsubmit="submitForm(event)" class="col-md mt-3 px-5 pl-md-4 d-flex flex-column justify-content-center">
+      <form id="contribute-form" class="col-md mt-3 px-5 pl-md-4 d-flex flex-column justify-content-center">
+        <div class="row">
+          <div class="form-group col">
+            <label for="name">Your name</label>
+            <input type="text" class="form-control" 
+            id="name" name="name"
+            placeholder="Your name here" required>
+          </div>
+          <div class="form-group col">
+            <label for="email">Your email</label>
+            <input type="email" class="form-control" 
+            id="email" name="email"
+            placeholder="Your email here" required>
+          </div>
+        </div>
         <div class="form-group">
           <label for="question">Question</label>
           <input type="text" class="form-control" 
           id="question" name="question"
-          placeholder="Your creative question here">
+          placeholder="Your creative question here" required>
         </div>
         <div class="row">
           <div class="form-group col">
             <label for="answer1">Answer nº 1</label>
             <input type="text" class="form-control" 
             id="answer1" name="answer1"
-            placeholder="First answer">
+            placeholder="First answer" required>
           </div>
           <div class="form-group col">
             <label for="answer2">Answer nº 2</label>
             <input type="text" class="form-control" 
             id="answer2" name="answer2"
-            placeholder="Second answer">
+            placeholder="Second answer" required>
           </div>
         </div>
         <div>
           <p class="d-inline-flex mr-2 mb-1">Which question is the correct?</p>
           <div class="custom-control custom-radio custom-control-inline">
             <input type="radio" id="customRadioInline1" value="opt1"
-            name="correctAnswer" class="custom-control-input">
+            name="correctAnswer" class="custom-control-input" required>
             <label class="custom-control-label" for="customRadioInline1">First</label>
           </div>
 
           <div class="custom-control custom-radio custom-control-inline">
             <input type="radio" id="customRadioInline2" value="opt2"
-            name="correctAnswer" class="custom-control-input">
+            name="correctAnswer" class="custom-control-input" required>
             <label class="custom-control-label" for="customRadioInline2">Second</label>
           </div>
 
         </div>
         <label for="selectYear" class="d-inline-flex mr-3 mt-3 mt-md-1">Which CS50 year this question refers to?</label>
-        <select id="selectYear" class="custom-select">
+        <select name="selectYear" id="selectYear" class="custom-select" required>
           <option selected>Does't matter, everyone will understand</option>
           <option value="2018">2018</option>
           <option value="2019">2019</option>
           <option value="2020">2020</option>
           <option value="2021">2021</option>
         </select>
-        <button type="submit" class="btn btn-dark mt-4">Take this one!</button>
+        <input type="submit" value="Take this one!" class="btn btn-dark mt-4">
       </form>
       <div class="footer-space"></div>
     </div>
@@ -80,18 +100,14 @@
 
   <!-- script to load footer -->
   <script type="module" src="./functions/footer.js"></script>
-
-  <script>
-    function submitForm(e) {
-      e.preventDefault()
-      let answers = {}
-      for (el of e.target) {
-        answers[el.name] = el.value
-      }
-      alert(JSON.stringify(answers))
-      console.log(answers)
-    }
+  
+  <script type="text/javascript">
+    // window.onload = function() {
+      document.querySelector('#contribute-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        emailjs.sendForm('default_service', 'contribute_template', this);
+      });
+    // }
   </script>
-
 </body>
 </html>
