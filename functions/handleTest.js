@@ -144,7 +144,7 @@ function finishTest() {
   
     cardBody.appendChild(p)
     progressBar.classList.add("bg-yellow")
-    actButton.setAttribute("href", "index.html")
+    actButton.setAttribute("href", "test.html")
     actButton.appendChild(document.createTextNode("Try again!"))
   }
   if (result === "bad") {
